@@ -122,7 +122,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464768, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
@@ -278,3 +278,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af012bfea4f6434b97b8f80a00f6787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calmDownTime: 1
+  NOPrefab: {fileID: 146114, guid: bd9d197d48b354f18b2075b838459475, type: 2}
