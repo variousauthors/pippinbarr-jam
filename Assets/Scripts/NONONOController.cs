@@ -15,12 +15,37 @@ public class NONONOController : MonoBehaviour {
 
 	private Animator animator;
 	private float quietTime = 0f;
+	private CameraShake cameraShake;
 
 	private bool isRapidlyPressingX = false;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
+		cameraShake = Camera.main.GetComponent<CameraShake>();
+	}
+
+	// Update is called once per frame
+	void Update () {
+		
+		if (Input.GetKeyDown (KeyCode.X)) {
+			quietTime = 0f;
+			isRapidlyPressingX = true;
+
+			cameraShake.StartShaking ();
+			GenerateNo ();
+	
+		} else {
+			quietTime += Time.deltaTime;
+			cameraShake.StopShaking ();
+
+			if (quietTime > calmDownTime) {
+				isRapidlyPressingX = false;
+			}
+
+		}
+
+		animator.SetBool ("isRapidlyPressingX", isRapidlyPressingX);
 	}
 
 	private void GenerateNo () {
@@ -44,25 +69,5 @@ public class NONONOController : MonoBehaviour {
 
 		no.transform.localScale = new Vector2 (Random.Range(noSizeMin, 1f), Random.Range(noSizeMin, 1f));
 		no.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, noSaturationMin, 1f, noValueMin, 1f);
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
-		if (Input.GetKeyDown (KeyCode.X)) {
-			quietTime = 0f;
-			isRapidlyPressingX = true;
-
-			GenerateNo ();
-		} else {
-			quietTime += Time.deltaTime;
-
-			if (quietTime > calmDownTime) {
-				isRapidlyPressingX = false;
-			}
-
-		}
-
-		animator.SetBool ("isRapidlyPressingX", isRapidlyPressingX);
 	}
 }
