@@ -301,3 +301,8 @@ MonoBehaviour:
   NOPrefabs:
   - {fileID: 107480, guid: 3fb2b45fb33be4a988697b119c3b68e9, type: 2}
   - {fileID: 107174, guid: 5ebac7038de1a4ae78e36c0e5933573a, type: 2}
+  noSFXList:
+  - {fileID: 8300000, guid: 6ed77b20a3bff46aabb79342209f1b2e, type: 3}
+  - {fileID: 8300000, guid: 7863781adc66b449e9408d6639055dae, type: 3}
+  - {fileID: 8300000, guid: 864d1fea4e46e42f88566613861c4069, type: 3}
+  - {fileID: 8300000, guid: 7da5402f9161045d4a8c13a439af8f77, type: 3}

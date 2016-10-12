@@ -13,6 +13,8 @@ public class NONONOController : MonoBehaviour {
 
 	public List<GameObject> NOPrefabs;
 
+	public List<AudioClip> noSFXList;
+
 	private Animator animator;
 	private float quietTime = 0f;
 	private CameraShake cameraShake;
@@ -33,7 +35,9 @@ public class NONONOController : MonoBehaviour {
 			isRapidlyPressingX = true;
 
 			cameraShake.StartShaking ();
-			GenerateNo ();
+			Vector3 pos = GenerateNo ();
+			
+			AudioSource.PlayClipAtPoint (noSFXList[Random.Range(0, noSFXList.Count)], pos);
 	
 		} else {
 			quietTime += Time.deltaTime;
@@ -48,7 +52,7 @@ public class NONONOController : MonoBehaviour {
 		animator.SetBool ("isRapidlyPressingX", isRapidlyPressingX);
 	}
 
-	private void GenerateNo () {
+	private Vector2 GenerateNo () {
 		Vector2 position = Random.insideUnitCircle;
 
 		while (position.magnitude < personalSpace) {
@@ -69,5 +73,7 @@ public class NONONOController : MonoBehaviour {
 
 		no.transform.localScale = new Vector2 (Random.Range(noSizeMin, 1f), Random.Range(noSizeMin, 1f));
 		no.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, noSaturationMin, 1f, noValueMin, 1f);
+
+		return no.transform.localPosition;
 	}
 }
