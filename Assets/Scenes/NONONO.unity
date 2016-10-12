@@ -279,4 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calmDownTime: 1
-  NOPrefab: {fileID: 146114, guid: bd9d197d48b354f18b2075b838459475, type: 2}
+  noValueMin: 0.7
+  noSaturationMin: 0.7
+  NOPrefabs:
+  - {fileID: 107480, guid: 3fb2b45fb33be4a988697b119c3b68e9, type: 2}
+  - {fileID: 107174, guid: 5ebac7038de1a4ae78e36c0e5933573a, type: 2}

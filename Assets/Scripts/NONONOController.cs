@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NONONOController : MonoBehaviour {
 
 	public float calmDownTime = 1f;
-	public GameObject NOPrefab;
+
+	[Range(0, 1)] public float noValueMin = 0.7f;
+	[Range(0, 1)] public float noSaturationMin = 0.7f;
+
+	public List<GameObject> NOPrefabs;
 
 	private Animator animator;
 	private float quietTime = 0f;
@@ -26,7 +31,12 @@ public class NONONOController : MonoBehaviour {
 			)
 		);
 
-		Instantiate(NOPrefab, screenPosition, Quaternion.identity);
+		int index = Random.Range (0, NOPrefabs.Count);
+
+		GameObject no = Instantiate(NOPrefabs[index], screenPosition, Quaternion.identity) as GameObject;
+
+		no.transform.localScale = new Vector2 (Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+		no.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, noSaturationMin, 1f, noValueMin, 1f);
 	}
 
 	// Update is called once per frame
