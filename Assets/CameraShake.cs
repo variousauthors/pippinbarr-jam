@@ -3,33 +3,53 @@ using System.Collections;
 
 public class CameraShake : MonoBehaviour {
 
+	private Camera thisCamera;
 	private Vector3 originalCamPos;
+	private float originalCamSize;
+
+	private float shakeDuration = 0.2f;
+	private float shakeMagnitude = 2f;
+	private float zoomResetDuration = 5f;
 
 	// Use this for initialization
 	void Start () {
-		originalCamPos = Camera.main.transform.position;
+		thisCamera = this.GetComponent<Camera> ();
+		originalCamPos = thisCamera.transform.position;
+		originalCamSize = thisCamera.orthographicSize;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	private bool shouldShake = false;
 	public void StopShaking () {
 		shouldShake = false;
+		StartCoroutine (ResetZoom(Time.time));
 	}
 
 	public void StartShaking () {
+		if (shouldShake == true) {
+			return;
+		}
+
 		shouldShake = true;
+
+		this.GetComponent<Camera> ().orthographicSize *= 0.5f;
 
 		StopAllCoroutines ();
 		StartCoroutine (Shake());
 	}
 
-	private float duration = 0.2f;
-	private float magnitude = 2f;
+	private IEnumerator ResetZoom (float startTime) {
+		// lerp out the zoom
+		float startValue = thisCamera.orthographicSize;
+
+		while (thisCamera.orthographicSize < originalCamSize) {
+			float progress = (Time.time - startTime) / zoomResetDuration;
+			thisCamera.orthographicSize = Mathf.Lerp(startValue, originalCamSize, 1f - Mathf.Cos(progress*progress * Mathf.PI * 0.5f));
+
+			yield return null;
+		}
+	}
+		
 	private IEnumerator Shake() {
 
 		float elapsed = 0.0f;
@@ -41,15 +61,15 @@ public class CameraShake : MonoBehaviour {
 				elapsed += Time.deltaTime;				
 			}
 
-			percentComplete = elapsed / duration;
+			percentComplete = elapsed / shakeDuration;
 			float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
 
 			// map value to [-1, 1]
 			float x = Random.value * 2.0f - 1.0f;
 			float y = Random.value * 2.0f - 1.0f;
 
-			x *= magnitude * damper;
-			y *= magnitude * damper;
+			x *= shakeMagnitude * damper;
+			y *= shakeMagnitude * damper;
 
 			transform.position = new Vector3(x, y, originalCamPos.z);
 

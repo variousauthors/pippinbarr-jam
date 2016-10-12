@@ -37,12 +37,12 @@ public class NONONOController : MonoBehaviour {
 	
 		} else {
 			quietTime += Time.deltaTime;
-			cameraShake.StopShaking ();
 
 			if (quietTime > calmDownTime) {
+				cameraShake.StopShaking ();
+
 				isRapidlyPressingX = false;
 			}
-
 		}
 
 		animator.SetBool ("isRapidlyPressingX", isRapidlyPressingX);

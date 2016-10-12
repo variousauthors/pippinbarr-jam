@@ -85,6 +85,21 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &269183313 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 166818, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
+  m_PrefabInternal: {fileID: 1017241817}
+--- !u!114 &269183319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269183313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de00d53009804446bb74164245d58119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1017241817
 Prefab:
   m_ObjectHideFlags: 0
@@ -214,7 +229,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2109683336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -281,6 +296,8 @@ MonoBehaviour:
   calmDownTime: 1
   noValueMin: 0.7
   noSaturationMin: 0.7
+  noSizeMin: 0.5
+  personalSpace: 0.4
   NOPrefabs:
   - {fileID: 107480, guid: 3fb2b45fb33be4a988697b119c3b68e9, type: 2}
   - {fileID: 107174, guid: 5ebac7038de1a4ae78e36c0e5933573a, type: 2}
