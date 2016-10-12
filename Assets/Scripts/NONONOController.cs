@@ -8,6 +8,8 @@ public class NONONOController : MonoBehaviour {
 
 	[Range(0, 1)] public float noValueMin = 0.7f;
 	[Range(0, 1)] public float noSaturationMin = 0.7f;
+	[Range(0, 1)] public float noSizeMin = 0.5f;
+	[Range(0, 1)] public float personalSpace = 0.4f;
 
 	public List<GameObject> NOPrefabs;
 
@@ -22,11 +24,16 @@ public class NONONOController : MonoBehaviour {
 	}
 
 	private void GenerateNo () {
+		Vector2 position = Random.insideUnitCircle;
+
+		while (position.magnitude < personalSpace) {
+			position = Random.insideUnitCircle;
+		}
 
 		Vector3 screenPosition = Camera.main.ScreenToWorldPoint(
 			new Vector3(
-				Random.Range(0, Screen.width), 
-				Random.Range(0, Screen.height), 
+				position.x * Screen.width/2 + Screen.width/2, 
+				position.y * Screen.width/2 + Screen.height/2, 
 				Camera.main.farClipPlane / 2
 			)
 		);
@@ -35,7 +42,7 @@ public class NONONOController : MonoBehaviour {
 
 		GameObject no = Instantiate(NOPrefabs[index], screenPosition, Quaternion.identity) as GameObject;
 
-		no.transform.localScale = new Vector2 (Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+		no.transform.localScale = new Vector2 (Random.Range(noSizeMin, 1f), Random.Range(noSizeMin, 1f));
 		no.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, noSaturationMin, 1f, noValueMin, 1f);
 	}
 
