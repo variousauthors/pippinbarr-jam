@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MainMonitor : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class MainMonitor : MonoBehaviour {
 
 	private float tweetHeight;
 	private int position = 0; // which item are we "at"
+
+	private bool isScrolling = false;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +39,12 @@ public class MainMonitor : MonoBehaviour {
 			StopAllCoroutines ();
 			StartCoroutine (ScrollTo(new Vector2 (0, position * tweetHeight)));
 		}
+
+		if (Input.GetKeyDown (KeyCode.Space) && !isScrolling) {
+			// here we might fade out
+
+			SceneManager.LoadScene ("NONONO");
+		}
 	}
 
 	IEnumerator ScrollTo (Vector2 endPosition) {
@@ -43,6 +52,8 @@ public class MainMonitor : MonoBehaviour {
 		float lerpTime = 0.5f;
 		float time = 0f;
 		float progress = 0f;
+
+		isScrolling = true;
 
 		while (time < lerpTime) {
 			time += Time.deltaTime;
@@ -52,5 +63,6 @@ public class MainMonitor : MonoBehaviour {
 			yield return null;			
 		}
 
+		isScrolling = false;
 	}
 }
