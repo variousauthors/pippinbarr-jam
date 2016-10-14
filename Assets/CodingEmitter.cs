@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CodingEmitter : MonoBehaviour {
+public class CodingEmitter : MonoBehaviour
+{
 
 	public int monitorWidth = 12;
 	public float period = 1f;
@@ -10,51 +12,59 @@ public class CodingEmitter : MonoBehaviour {
 	private float tic = 0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 	
 	// Update is called once per frame
 	private bool skip = true;
-	void Update () {
-		tic += Time.deltaTime;
+	private int lineWidth = 0;
+	private int pos = 0;
+	private List<CodingPixel> pixels = new List<CodingPixel>();
+	private float p = 0.7f;
+	bool firstChar = true;
 
-		if (tic < period) {
+	void Update ()
+	{
+		if (!Input.anyKeyDown) {
 			return;
 		}
 
-		tic = 0f;
-		skip = !skip;
+		if ((lineWidth - pos) == 0) {
+			// start a new line
+			lineWidth = monitorWidth - Random.Range (monitorWidth / 4, (int)(monitorWidth * 0.75f));
+			p = 0.7f;
+			firstChar = true;
+			pos = 0;
 
-		if (skip) {			
-			return;
-		}
-
-		int lineWidth = monitorWidth - Random.Range (monitorWidth/4, (int)(monitorWidth * 0.75f));
-		float p = 0.7f;
-		bool firstChar = true;
-
-		for (int i = 0; i < lineWidth; i++) {
-			
-			if (Random.value < p) {
-				GameObject pixel = Instantiate (pixelPrefab);
-				CodingPixel codingPixel = pixel.GetComponent<CodingPixel> ();
-
-				pixel.transform.SetParent (this.transform);
-				pixel.transform.localPosition = new Vector3 (i, 0);
-
-				codingPixel.period = period;
-				p *= 0.8f; // if this was a letter, the next character is increasingly more likely to be a space
-				firstChar = false;
-			} else {
-				// the first char rule permits the existence of indents
-				if (firstChar) {
-					lineWidth += 1;
-				} else {
-					p = 1f; // after a space we get a letter					
-				}
-
+			// move all the existing pixels up two
+			foreach (CodingPixel pixel in pixels) {
+				pixel.Move ();
+				pixel.Move ();
 			}
 		}
+
+		if (Random.value < p) {
+			GameObject pixel = Instantiate (pixelPrefab);
+			CodingPixel codingPixel = pixel.GetComponent<CodingPixel> ();
+
+			pixel.transform.SetParent (this.transform);
+			pixel.transform.localPosition = new Vector3 (pos, 0);
+			pixels.Add (codingPixel);
+
+			p *= 0.8f; // if this was a letter, the next character is increasingly more likely to be a space
+			firstChar = false;
+		} else {
+			// the first char rule permits the existence of indents
+			if (firstChar) {
+				lineWidth += 1;
+			} else {
+				p = 1f; // after a space we get a letter					
+			}
+
+		}
+
+		pos++;
 	}
 }

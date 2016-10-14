@@ -193,11 +193,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494504, guid: a2d06d15437a84d4fb277ceb5566c4cb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11430314, guid: a2d06d15437a84d4fb277ceb5566c4cb, type: 2}
       propertyPath: period
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21204528, guid: a2d06d15437a84d4fb277ceb5566c4cb, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9512220, guid: a2d06d15437a84d4fb277ceb5566c4cb, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2d06d15437a84d4fb277ceb5566c4cb, type: 2}
@@ -212,6 +220,7 @@ GameObject:
   - 4: {fileID: 1136811503}
   - 212: {fileID: 1136811502}
   - 95: {fileID: 1136811501}
+  - 114: {fileID: 1136811504}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -261,7 +270,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -278,7 +287,18 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
+--- !u!114 &1136811504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1136811500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb754cb87cc44e9080926fe658e8543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1176070655
 GameObject:
   m_ObjectHideFlags: 0

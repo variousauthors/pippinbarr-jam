@@ -3,24 +3,22 @@ using System.Collections;
 
 public class CodingPixel : MonoBehaviour {
 
-	public float period = 1f;
+	private SpriteRenderer spriteRenderer;
+	private Color originalColor;
 
-	private float tic = 0f;
-
-	// Use this for initialization
 	void Start () {
-	
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		originalColor = spriteRenderer.color;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		tic += Time.deltaTime;
 
-		if (tic < period) {
-			return;
-		}
-
-		tic = 0f;
+	public void Move () {
 		transform.localPosition += new Vector3 (0, 1, 0);
+	}
+
+	public void FadeOut () {
+		Color color = spriteRenderer.color;
+		color.a *= 0.9f;
+
+		spriteRenderer.color = color;
 	}
 }
