@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CurtainController : MonoBehaviour {
 
@@ -19,8 +20,9 @@ public class CurtainController : MonoBehaviour {
 
 		image.color = color;
 
-		if (image.color.a == 1) {
-			
+		Debug.Log (image.color.a);
+		if (image.color.a > 1) {
+			SceneManager.LoadScene ("OzymandiasDesert");
 		}
 	}
 }

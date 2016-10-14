@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/HeavyLifting.unity
   - enabled: 1
     path: Assets/Scenes/NONONO.unity
+  - enabled: 1
+    path: Assets/Scenes/Ozymandias.unity
+  - enabled: 1
+    path: Assets/Scenes/OzymandiasDesert.unity

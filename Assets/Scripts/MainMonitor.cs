@@ -42,8 +42,9 @@ public class MainMonitor : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space) && !isScrolling) {
 			// here we might fade out
-
-			SceneManager.LoadScene ("NONONO");
+			if (position != 0) {
+				SceneManager.LoadScene (position);
+			}
 		}
 	}
 
