@@ -7,8 +7,8 @@ public class CameraShake : MonoBehaviour {
 	private Vector3 originalCamPos;
 	private float originalCamSize;
 
-	private float shakeDuration = 0.2f;
-	private float shakeMagnitude = 2f;
+	private float shakeDuration = 0.1f;
+	private float shakeMagnitude = 1f;
 	private float zoomResetDuration = 5f;
 
 	// Use this for initialization
