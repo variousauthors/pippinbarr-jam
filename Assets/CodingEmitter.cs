@@ -9,12 +9,14 @@ public class CodingEmitter : MonoBehaviour
 	public float period = 1f;
 	public GameObject pixelPrefab;
 
+	public CurtainController curtain;
+
 	private float tic = 0f;
 
 	// Use this for initialization
 	void Start ()
 	{
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -41,6 +43,8 @@ public class CodingEmitter : MonoBehaviour
 			p = 0.7f;
 			firstChar = true;
 			pos = 0;
+
+			curtain.Step ();
 
 			// move all the existing pixels up two
 			foreach (CodingPixel pixel in pixels) {
