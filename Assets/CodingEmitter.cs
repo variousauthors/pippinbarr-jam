@@ -27,6 +27,10 @@ public class CodingEmitter : MonoBehaviour
 
 	void Update ()
 	{
+		if (Time.timeScale == 0) {
+			return;
+		}
+
 		if (!Input.anyKeyDown) {
 			return;
 		}
