@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SunsetController : MonoBehaviour {
 
-	private int startY = 249;
+	private int startY = 275;
 	private float period = 1f;
 	private float tic = 0f;
 

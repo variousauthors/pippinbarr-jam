@@ -859,6 +859,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2077392, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077392, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077392, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077392, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d423e74499584567a57ab0647d80fbf, type: 2}
   m_IsPrefabParent: 0
@@ -1016,7 +1032,7 @@ MonoBehaviour:
   - It is 2016, and you've finally graduated university!
   - Now it's time to become a Legendary Game Designer.
   - You have a lot of works to do.
-  - 'Press ''X'' repeatedly to program. '
+  - TYPE to program.
   text: {fileID: 2126011432}
   spacePrompt: {fileID: 545666265}
 --- !u!1 &1985152106
@@ -1067,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
