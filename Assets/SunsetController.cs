@@ -6,10 +6,11 @@ public class SunsetController : MonoBehaviour {
 	private int startY = 275;
 	private float period = 1f;
 	private float tic = 0f;
-
+	
 	// Use this for initialization
 	void Start () {
 		this.transform.localPosition = new Vector2 (0, startY);
+
 	}
 	
 	// Update is called once per frame

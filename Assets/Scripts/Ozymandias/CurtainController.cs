@@ -20,7 +20,7 @@ public class CurtainController : MonoBehaviour {
 
 		image.color = color;
 
-		if (image.color.a > 1) {
+		if (image.color.a > 1.75) {
 			SceneManager.LoadScene ("OzymandiasDesert");
 		}
 	}
